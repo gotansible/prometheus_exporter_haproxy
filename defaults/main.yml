@@ -15,4 +15,4 @@ prometheus_haproxy_log_dir: /var/log/prometheus_haproxy
 
 prometheus_haproxy_listen_address: ":9101"
 prometheus_haproxy_scrape_uri: "http://localhost/stats;csv"
-prometheus_haproxy_args: "-web.listen-address={{ prometheus_haproxy_port }} -haproxy.scrape-uri={{ prometheus_haproxy_scrape_uri }}"
+prometheus_haproxy_args: "-web.listen-address={{ prometheus_haproxy_listen_address }} -haproxy.scrape-uri={{ prometheus_haproxy_scrape_uri }}"
