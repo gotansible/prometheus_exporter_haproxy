@@ -13,5 +13,5 @@
     state: up
     timeout: 9
     user: "{{ prometheus_exporter_haproxy_user }}"
-    command: "{{ prometheus_exporter_haproxy_install_dir }}/node_exporter collectors.enabled=attributes,diskstats,filesystem,loadavg,meminfo,stat,textfile,time,netdev,netstat,runit,lastlogin"
+    command: "{{ prometheus_exporter_haproxy_install_dir }}/haproxy_exporter collectors.enabled=attributes,diskstats,filesystem,loadavg,meminfo,stat,textfile,time,netdev,netstat,runit,lastlogin"
 
