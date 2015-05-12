@@ -1,0 +1,13 @@
+---
+# defaults file for prometheus_exporter_haproxy
+
+prometheus_exporter_haproxy_build_folder: /tmp/prometheus_exporter_haproxy
+prometheus_exporter_haproxy_user: prometheus_exporter_haproxy
+prometheus_exporter_haproxy_group: prometheus_exporter_haproxy
+prometheus_exporter_haproxy_service_name: prometheus_exporter_haproxy
+prometheus_exporter_haproxy_repo: https://github.com/prometheus/haproxy_exporter
+
+prometheus_exporter_haproxy_install_dir: /opt/prometheus_exporter_haproxy
+prometheus_exporter_haproxy_conf_dir: /etc/prometheus_exporter_haproxy
+prometheus_exporter_haproxy_log_dir: /var/log/prometheus_exporter_haproxy
+

@@ -1,0 +1,49 @@
+---
+
+- name: create prometheus group
+  group:
+    name={{ prometheus_exporter_haproxy_group }}
+    state=present
+    system=yes
+
+- name: create prometheus user
+  user:
+    name={{  prometheus_exporter_haproxy_user }}
+    group={{ prometheus_exporter_haproxy_group }}
+    system=yes
+    createhome=no
+
+- name: already installed check
+  stat: path={{ prometheus_exporter_haproxy_install_dir }}/haproxy_exporter
+  register: binary_file
+
+- name: install - checkout prometheus from github.com
+  git:
+    repo={{ prometheus_exporter_haproxy_repo }}
+    dest={{ prometheus_exporter_haproxy_build_folder }}
+
+- name: make prometheus
+  command: make 
+  args:
+    chdir: "{{ prometheus_exporter_haproxy_build_folder }}"
+  when: not binary_file.stat.exists
+
+- name: make directories
+  file:
+    state=directory
+    path={{ item }}
+    owner={{ prometheus_exporter_haproxy_user }}
+    group={{ prometheus_exporter_haproxy_group }}
+    mode=0755
+  with_items:
+    - "{{ prometheus_exporter_haproxy_conf_dir }}"
+    - "{{ prometheus_exporter_haproxy_log_dir }}"
+    - "{{ prometheus_exporter_haproxy_install_dir }}"
+
+- name: move binary
+  command: mv {{ prometheus_exporter_haproxy_build_folder }}/haproxy_exporter {{ prometheus_exporter_haproxy_install_dir }}/
+  args:
+    creates: "{{ prometheus_exporter_haproxy_install_dir }}/haproxy_exporter"
+
+
+
