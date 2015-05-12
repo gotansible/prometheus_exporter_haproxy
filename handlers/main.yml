@@ -1,2 +1,7 @@
 ---
 # handlers file for prometheus_exporter_haproxy
+
+- name: restart prometheus haproxy
+  runit: name={{ prometheus_haproxy_service_name }} state=up timeout=9 action=reload
+  when: not prometheus_haproxy_service_status.cycled
+

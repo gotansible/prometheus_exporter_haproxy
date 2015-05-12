@@ -1,13 +1,18 @@
 ---
-# defaults file for prometheus_exporter_haproxy
+# defaults file for prometheus_haproxy
 
-prometheus_exporter_haproxy_build_folder: /tmp/prometheus_exporter_haproxy
-prometheus_exporter_haproxy_user: prometheus_exporter_haproxy
-prometheus_exporter_haproxy_group: prometheus_exporter_haproxy
-prometheus_exporter_haproxy_service_name: prometheus_exporter_haproxy
-prometheus_exporter_haproxy_repo: https://github.com/prometheus/haproxy_exporter
+prometheus_haproxy_build_folder: /tmp/prometheus_haproxy
+prometheus_haproxy_user: prometheus_haproxy
+prometheus_haproxy_group: prometheus_haproxy
+prometheus_haproxy_service_name: prometheus_haproxy
+prometheus_haproxy_repo: https://github.com/prometheus/haproxy_exporter
 
-prometheus_exporter_haproxy_install_dir: /opt/prometheus_exporter_haproxy
-prometheus_exporter_haproxy_conf_dir: /etc/prometheus_exporter_haproxy
-prometheus_exporter_haproxy_log_dir: /var/log/prometheus_exporter_haproxy
+prometheus_haproxy_install_dir: /opt/prometheus_haproxy
+prometheus_haproxy_conf_dir: /etc/prometheus_haproxy
+prometheus_haproxy_log_dir: /var/log/prometheus_haproxy
 
+# config
+
+prometheus_haproxy_listen_address: ":9101"
+prometheus_haproxy_scrape_uri: "http://localhost/stats;csv"
+prometheus_haproxy_args: "-web.listen-address={{ prometheus_haproxy_port }} -haproxy.scrape-uri={{ prometheus_haproxy_scrape_uri }}"
