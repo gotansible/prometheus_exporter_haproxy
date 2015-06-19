@@ -1,0 +1,10 @@
+---
+- name: setup haproxy exporter as runit service and start it
+  runit:
+    name: "{{ prometheus_haproxy_service_name }}"
+    enabled: true
+    state: up
+    timeout: 9
+    user: "{{ prometheus_haproxy_user }}"
+    command: "{{ prometheus_haproxy_install_dir }}/haproxy_exporter {{ prometheus_haproxy_args }}"
+  register: prometheus_haproxy_service_status
