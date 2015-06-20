@@ -5,7 +5,7 @@ prometheus_haproxy_build_folder: /tmp/prometheus_haproxy
 prometheus_haproxy_user: prometheus_haproxy
 prometheus_haproxy_group: prometheus_haproxy
 prometheus_haproxy_service_name: prometheus_haproxy
-prometheus_haproxy_repo: https://github.com/prometheus/haproxy_exporter
+prometheus_haproxy_repo: "https://github.com/prometheus/haproxy_exporter"
 
 prometheus_haproxy_install_dir: /opt/prometheus_haproxy
 prometheus_haproxy_conf_dir: /etc/prometheus_haproxy
